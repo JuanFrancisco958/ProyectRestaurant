@@ -1,37 +1,40 @@
 package Orders;
-import Products.Product;
+import Products.*;
+import Clases.*;
 
-import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
-public class Order implements Serializable {
+public class Order {
 	
 	private Client client;
-	private int orderNumber;
-	private List<Product> putProducts;
-	private DateLocal date;
+	private static int orderNumber;
+	private List<Product> Products;
+	private Date LocalDateTime;
+	private double total;
 	private String address;
 	private boolean delivered=false; 
 	private boolean payed=false;
 	
 	
 	
-	protected Order(Client client, int orderNumber, List<Product> putProducts, DateLocal date, String address,
+	@SuppressWarnings("static-access")
+	protected Order(Client client, int orderNumber,List<Product>Products,Date LocalDateTime, String address,
 			boolean delivered, boolean payed) {
 		super();
 		this.client = client;
 		this.orderNumber = orderNumber;
-		this.putProducts = putProducts;
-		this.date = date;
+		this.Products = Products;
+		this.LocalDateTime = LocalDateTime;
 		this.address = address;
 		this.delivered = delivered;
 		this.payed = payed;
 	}
 
-	public Order (Client client, int orderNumber, List<Product> putProducts) {
+	public Order (Client client, int orderNumber, List<Product> Products) {
 		this.client=client;
-		this.putProducts=putProducts;
-		this.orderNumber=orderNumber;
+		this.Products=Products;
+		Order.orderNumber=orderNumber;
 	}
 
 	public Client getClient() {
@@ -47,23 +50,35 @@ public class Order implements Serializable {
 	}
 
 	public void setOrderNumber(int orderNumber) {
-		this.orderNumber = orderNumber;
+		Order.orderNumber = orderNumber;
 	}
 
-	public List<Product> getPutProducts() {
-		return putProducts;
+	public List<Product> getProducts() {
+		return Products;
 	}
 
-	public void setPutProducts(List<Product> putProducts) {
-		this.putProducts = putProducts;
+	public void setPutProducts(List<Product> Products) {
+		this.Products = Products;
 	}
 
-	public DateLocal getDate() {
-		return date;
+	public Date getLocalDateTime() {
+		return LocalDateTime;
 	}
 
-	public void setDate(DateLocal date) {
-		this.date = date;
+	public void setLocalDateTime(Date localDateTime) {
+		LocalDateTime = localDateTime;
+	}
+
+	public double getTotal() {
+		return total;
+	}
+
+	public void setTotal(double total) {
+		this.total = total;
+	}
+
+	public void setProducts(List<Product> products) {
+		Products = products;
 	}
 
 	public String getAddress() {
@@ -92,7 +107,7 @@ public class Order implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Order [orderNumber=" + orderNumber + ", putProducts=" + putProducts + ", address=" + address
+		return "Order [orderNumber=" + orderNumber + ", putProducts=" + Products + ", address=" + address
 				+ ", delivered=" + delivered + ", payed=" + payed + "]";
 	}
 	
