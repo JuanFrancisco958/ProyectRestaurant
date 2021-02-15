@@ -16,14 +16,12 @@ public class Order {
 	private boolean delivered=false; 
 	private boolean payed=false;
 	
-	
-	
-	@SuppressWarnings("static-access")
-	protected Order(Client client, int orderNumber,List<Product>Products,Date LocalDateTime, String address,
+	//Constructores de la clase Order
+	public Order(Client client, int orderNumber,List<Product>Products,Date LocalDateTime, String address,
 			boolean delivered, boolean payed) {
 		super();
 		this.client = client;
-		this.orderNumber = orderNumber;
+		Order.orderNumber = orderNumber;
 		this.Products = Products;
 		this.LocalDateTime = LocalDateTime;
 		this.address = address;
@@ -36,6 +34,8 @@ public class Order {
 		this.Products=Products;
 		Order.orderNumber=orderNumber;
 	}
+	
+	//Métedos Getters and Setters de los atributos de Order
 
 	public Client getClient() {
 		return client;
@@ -104,7 +104,23 @@ public class Order {
 	public void setPayed(boolean payed) {
 		this.payed = payed;
 	}
-
+	
+	//Métodos de los productos dentro de la Comanda.
+	
+	public void addNewProducts(List<Product> products) {
+		Products.addAll(products);
+	}
+	public void clearAllProducts() {
+		Products.clear();
+	}
+	public void addProduct(Product p) {
+		Products.add(p);
+	}
+	public void deleteProduct(Product p) {
+		Products.remove(p);
+	}
+	
+	//Método toString
 	@Override
 	public String toString() {
 		return "Order [orderNumber=" + orderNumber + ", putProducts=" + Products + ", address=" + address
