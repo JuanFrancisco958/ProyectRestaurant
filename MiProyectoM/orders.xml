@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<RepositoryO>
+    <order>
+        <client>
+            <dni>1122334455p</dni>
+            <name>pepe</name>
+            <age>22</age>
+            <address>C/bonifacio</address>
+            <orders>1</orders>
+            <points>0</points>
+            <u/>
+        </client>
+        <id>1</id>
+        <Products>1</Products>
+        <total>0.0</total>
+        <localDateTime>2021-03-01T18:12:05.778737500</localDateTime>
+        <address>C/Bonifacio</address>
+        <delivered>false</delivered>
+        <payed>true</payed>
+    </order>
+</RepositoryO>
