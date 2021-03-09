@@ -13,14 +13,24 @@ public  class NewCarrito implements IOrderMenuController{
 	private Repository carta=new Repository();
 	private RepositoryO o=RepositoryO.getInstance();
 	private RepositoryC c=RepositoryC.getInstance();
+	
 	private static NewCarrito repositoryCar;
 	
 	
 	public void NewCarritoO() {
-		try {
-			this.newOrder=new Order(c.searchClient(GUI.getDni()), o.getAllOrders().get(o.getAllOrders().size()-1).getId()+1, carta.searchProduct(GUI.getString("Intrduce el nombre del producto: ")).getId(), GUI.getString("Introduce la dirreccion") );
-		} catch (Exception e) {
-			Syso.print("Error al crear la orden.");
+		if (!o.getAllOrders().isEmpty()) {
+			
+			try {
+				this.newOrder=new Order(c.searchClient(GUI.getDni()), o.getAllOrders().get(o.getAllOrders().size()-1).getId()+1, carta.searchProduct(GUI.getString("Intrduce el nombre del producto: ")).getId(), GUI.getString("Introduce la dirreccion") );
+			} catch (Exception e) {
+				Syso.print("Error al crear la orden.");
+			}
+		}else{
+			try {
+				this.newOrder=new Order(c.searchClient(GUI.getDni()), 1, carta.searchProduct(GUI.getString("Intrduce el nombre del producto: ")).getId(), GUI.getString("Introduce la dirreccion") );
+			} catch (Exception e) {
+				Syso.print("Error al crear la orden.");
+			}
 		}
 	}
 	private NewCarrito() {

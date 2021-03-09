@@ -17,35 +17,26 @@ import Vista.Syso;
 public class MainMenu implements IMainMenuController{
 
 	public static void main(String[] args) throws ClassNotFoundException  {
-		/*Repository carta=new Repository();
-		RepositoryC clientes=RepositoryC.getInstance();
-		RepositoryO comandas=RepositoryO.getInstance();
-		GUI.importarC(clientes);
-		GUI.importarO(comandas);
-		MainMenu u=new MainMenu();*/
-		
-		/*comandas.getAllOrders().forEach(item->System.out.println(item));
-		comandas.getAllOrders().get(GUI.getint("Introduce el id de la orden")-1).addProduct(carta.searchProduct(GUI.getString("Introduce el nombre del producto")).getId());
-*/
-		/*Iterator<Order> i=comandas.getAllOrders().iterator(); 
-		
-		while (i.hasNext()) {
-			if (GUI.getint("Introduce el id")==i.next().getId()) {
-				i.remove();
-			}
-		}*/
-		//clientes.addClient(new Client("31009229P", "juan", 19, "C/bonifacio"));
-		//comandas.getAllOrders().get(comandas.getAllOrders().size()-1).getId()+1;
-		//comandas.addOrder(new Order(clientes.searchClient("31009229P"), 3, 6, "C/Bonifacio", false, true));
-		//clientes.getAllClients().forEach(item->System.out.println(item));
+		//Repository carta=new Repository();
+		//RepositoryC clientes=RepositoryC.getInstance();
+		//RepositoryO comandas=RepositoryO.getInstance();
+		//GUI.importarC(clientes);
+		//GUI.importarO(comandas);
+	
 		//comandas.getAllOrders().forEach(item->System.out.println(item));
+		//clientes.getAllClients().forEach(item->System.out.println(item));
 		
-		/*GUI.exportarC(clientes);
-		GUI.exportarO(comandas);*/
+		//GUI.exportarC(clientes);
+		//GUI.exportarO(comandas);
 		run();
 	}
 	public static void run() {
 		Syso.menuDeBienvenida();
+		RepositoryC c=RepositoryC.getInstance();
+		RepositoryO o=RepositoryO.getInstance();
+		GUI.importarC(c);
+		GUI.importarO(o);
+		System.out.println(c.searchClient(GUI.getDni()));
 		menuPrincipal();
 	}
 	public static void menuPrincipal() {
@@ -115,6 +106,7 @@ public class MainMenu implements IMainMenuController{
 		Syso.menuPedidosRealizados();
 		MainMenu u=new MainMenu();
 		RepositoryC c=RepositoryC.getInstance();
+		GUI.importarC(c);
 		
 		switch (GUI.getint("")) {
 		case 1:
@@ -145,6 +137,7 @@ public class MainMenu implements IMainMenuController{
 		Syso.menuClientes();
 		MainMenu u=new MainMenu();
 		RepositoryC c=RepositoryC.getInstance();
+		GUI.importarC(c);
 		
 		switch (GUI.getint("")) {
 		case 1:
@@ -164,10 +157,14 @@ public class MainMenu implements IMainMenuController{
 			menuClientes();
 			break;
 		case 5:
-			GUI.exportarC(c);
+			Syso.printClients();
 			menuClientes();
 			break;
 		case 6:
+			GUI.exportarC(c);
+			menuClientes();
+			break;
+		case 7:
 			menuPrincipal();
 			break;
 
@@ -249,6 +246,7 @@ public class MainMenu implements IMainMenuController{
 	
 	public void newClient() {
 		RepositoryC c=RepositoryC.getInstance();
+		GUI.importarC(c);
 		try {
 			c.addClient(new Client(GUI.getDni(), GUI.getString("Introduce el nombre:"), GUI.getAge(), GUI.getString("Introduce direccion:")));
 		} catch (Exception e) {
@@ -259,6 +257,7 @@ public class MainMenu implements IMainMenuController{
 	public void addProduct() {
 		Repository carta=new Repository();
 		RepositoryO o=RepositoryO.getInstance();
+		GUI.importarO(o);
 		try {
 			Syso.printOrders();
 			o.getAllOrders().get(GUI.getint("Introduce el id de la orden")-1).addProduct(carta.searchProduct(GUI.getString("Introduce el nombre del producto")).getId());
@@ -288,6 +287,7 @@ public class MainMenu implements IMainMenuController{
 	@Override
 	public Order changeOrder(Client c) {
 		RepositoryO o=RepositoryO.getInstance();
+		GUI.importarO(o);
 
 		return null;
 	}
@@ -295,6 +295,7 @@ public class MainMenu implements IMainMenuController{
 	@Override
 	public Order changeOrder(LocalDate d) {
 		RepositoryO o=RepositoryO.getInstance();
+		GUI.importarO(o);
 
 		return null;
 	}
@@ -302,6 +303,7 @@ public class MainMenu implements IMainMenuController{
 	@Override
 	public Order changeOrder(Client c, LocalDate d) {
 		RepositoryO o=RepositoryO.getInstance();
+		GUI.importarO(o);
 
 		return null;
 	}
@@ -309,6 +311,7 @@ public class MainMenu implements IMainMenuController{
 	@Override
 	public void deleteOrder(Client c) {
 		RepositoryO o=RepositoryO.getInstance();
+		GUI.importarO(o);
 		List<Order> item=o.getOrdersByClient(GUI.getDni());
 		if (c!=null) {
 			Iterator<Order> i=o.getAllOrders().iterator(); 
@@ -324,6 +327,7 @@ public class MainMenu implements IMainMenuController{
 	@Override
 	public void deleteOrder(LocalDate d) {
 		RepositoryO o=RepositoryO.getInstance();
+		GUI.importarO(o);
 		List<Order> item=o.getOrdersByClient(GUI.getDni());
 		if (d!=null) {
 			Iterator<Order> i=o.getAllOrders().iterator(); 
@@ -339,6 +343,7 @@ public class MainMenu implements IMainMenuController{
 	@Override
 	public void deleteOrder(Client c, LocalDate d) {
 		RepositoryO o=RepositoryO.getInstance();
+		GUI.importarO(o);
 		List<Order> item=o.getOrdersByClient(GUI.getDni());
 		if (c!=null && d!=null) {
 			Iterator<Order> i=o.getAllOrders().iterator(); 
@@ -355,6 +360,7 @@ public class MainMenu implements IMainMenuController{
 	public Double cashToday() {
 		double result=0;
 		RepositoryO o=RepositoryO.getInstance();
+		GUI.importarO(o);
 		for (Order item : o.getAllOrders()) {
 			if (item.getLocalDateTime().isAfter(LocalDateTime.of(LocalDate.now(), LocalTime.MIDNIGHT))) {
 				result+=item.getTotal();
@@ -367,6 +373,7 @@ public class MainMenu implements IMainMenuController{
 	public Double cashThisMonht() {
 		double result=0;
 		RepositoryO o=RepositoryO.getInstance();
+		GUI.importarO(o);
 		for (Order item : o.getAllOrders()) {
 			if (item.getLocalDateTime().isAfter(LocalDateTime.of(LocalDate.now().getYear(), LocalDate.now().getMonthValue(), 01, LocalTime.MIDNIGHT.getHour(), LocalTime.MIDNIGHT.getMinute()))){
 				result+=item.getTotal();
@@ -379,6 +386,7 @@ public class MainMenu implements IMainMenuController{
 	public Double cashTotal() {
 		double result=0;
 		RepositoryO o=RepositoryO.getInstance();
+		GUI.importarO(o);
 		for (Order item : o.getAllOrders()) {
 			result+=item.getTotal();
 		}
@@ -388,6 +396,7 @@ public class MainMenu implements IMainMenuController{
 	@Override
 	public void viewOrdersNotPayed() {
 		RepositoryO o=RepositoryO.getInstance();
+		GUI.importarO(o);
 		Syso.printO(o.getOrdersNoPayed());
 		
 	}
@@ -395,6 +404,7 @@ public class MainMenu implements IMainMenuController{
 	@Override
 	public void viewOrdersPendingDelivered() {
 		RepositoryO o=RepositoryO.getInstance();
+		GUI.importarO(o);
 		Syso.printO(o.getOrdersNoDelivered());
 	}
 
@@ -402,6 +412,8 @@ public class MainMenu implements IMainMenuController{
 	public void saveAllAndClose() {
 		RepositoryC c=RepositoryC.getInstance();
 		RepositoryO o=RepositoryO.getInstance();
+		GUI.importarO(o);
+		GUI.importarC(c);
 		GUI.exportarC(c);
 		GUI.exportarO(o);
 	}

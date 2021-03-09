@@ -1,19 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Client>
     <cliente>
-        <dni>1122334455p</dni>
-        <name>pepe</name>
-        <age>22</age>
-        <address>C/bonifacio</address>
-        <points>0</points>
-        <u/>
-    </cliente>
-    <cliente>
         <dni>31009229P</dni>
-        <name>juan</name>
+        <name>Juan</name>
         <age>18</age>
-        <address>C/bonifacio</address>
-        <orders>2</orders>
+        <address>C/Bonifacio</address>
         <points>0</points>
         <u/>
     </cliente>

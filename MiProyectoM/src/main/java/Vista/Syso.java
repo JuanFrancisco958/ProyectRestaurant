@@ -10,6 +10,7 @@ import Products.Drink;
 import Products.Food;
 import Products.Product;
 import Products.Repository;
+import Utils.GUI;
 
 public class Syso {
 	public static void menuP() {
@@ -34,6 +35,7 @@ public class Syso {
 	}
 	
 	public static void menuDeBienvenida() {
+		                                                                  
 		System.out.println("+-------------------------------------------------+");
 		System.out.println("|  Bienvenido a su programa RestaurantGestor v1.0 |");
 		System.out.println("+-------------------------------------------------+");
@@ -45,8 +47,6 @@ public class Syso {
 		System.out.println("|  - Nicolas R. Ramirez                           |");
 		System.out.println("+-------------------------------------------------+");
 		System.out.println("|  Cargando programa...                           |");
-		System.out.println("|                                                 |");
-		System.out.println("|  Pulse Intro...                                 |");
 		System.out.println("|                                                 |");
 		System.out.println("+-------------------------------------------------+");
 	}
@@ -66,7 +66,7 @@ public class Syso {
 		System.out.println("|                                                 |");
 		System.out.println("|  - 5: Menu Carrito:                             |");
 		System.out.println("|                                                 |");
-		System.out.println("|  - 6: Guardar Cambios:                          |");
+		System.out.println("|  - 6: Guardar Cambios y salir:                  |");
 		System.out.println("|                                                 |");
 		System.out.println("|  - 7: Salir del Programa:                       |");
 		System.out.println("+-------------------------------------------------+");
@@ -121,9 +121,9 @@ public class Syso {
 		System.out.println("|                                                 |");
 		System.out.println("|  - 5: Mostrar todos los clientes:               |");
 		System.out.println("|                                                 |");
-		System.out.println("|  - 5: Guardar Nuevo Cliente:                    |");
+		System.out.println("|  - 6: Guardar Nuevo Cliente:                    |");
 		System.out.println("|                                                 |");
-		System.out.println("|  - 6: Volver al Menu Principal:                 |");
+		System.out.println("|  - 7: Volver al Menu Principal:                 |");
 		System.out.println("+-------------------------------------------------+");
 	}
 	public static void menuFinanzas() {
@@ -181,10 +181,12 @@ public class Syso {
 	
 	public static void printOrders() {
 		RepositoryO o=RepositoryO.getInstance();
+		GUI.importarO(o);
 		o.getAllOrders().forEach(item->System.out.println(item));
 	}
 	public static void printClients() {
 		RepositoryC c=RepositoryC.getInstance();
+		GUI.importarC(c);
 		c.getAllClients().forEach(item->System.out.println(item));
 	}
 	public static void printCarta() {
