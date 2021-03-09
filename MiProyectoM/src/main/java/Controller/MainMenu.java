@@ -17,23 +17,23 @@ import Vista.Syso;
 public class MainMenu implements IMainMenuController{
 
 	public static void main(String[] args) throws ClassNotFoundException  {
-		Repository carta=new Repository();
+		/*Repository carta=new Repository();
 		RepositoryC clientes=RepositoryC.getInstance();
 		RepositoryO comandas=RepositoryO.getInstance();
 		GUI.importarC(clientes);
 		GUI.importarO(comandas);
-		MainMenu u=new MainMenu();
+		MainMenu u=new MainMenu();*/
 		
 		/*comandas.getAllOrders().forEach(item->System.out.println(item));
 		comandas.getAllOrders().get(GUI.getint("Introduce el id de la orden")-1).addProduct(carta.searchProduct(GUI.getString("Introduce el nombre del producto")).getId());
 */
-		Iterator<Order> i=comandas.getAllOrders().iterator(); 
+		/*Iterator<Order> i=comandas.getAllOrders().iterator(); 
 		
 		while (i.hasNext()) {
 			if (GUI.getint("Introduce el id")==i.next().getId()) {
 				i.remove();
 			}
-		}
+		}*/
 		//clientes.addClient(new Client("31009229P", "juan", 19, "C/bonifacio"));
 		//comandas.getAllOrders().get(comandas.getAllOrders().size()-1).getId()+1;
 		//comandas.addOrder(new Order(clientes.searchClient("31009229P"), 3, 6, "C/Bonifacio", false, true));
@@ -42,7 +42,7 @@ public class MainMenu implements IMainMenuController{
 		
 		/*GUI.exportarC(clientes);
 		GUI.exportarO(comandas);*/
-		//run();
+		run();
 	}
 	public static void run() {
 		Syso.menuDeBienvenida();
@@ -119,15 +119,19 @@ public class MainMenu implements IMainMenuController{
 		switch (GUI.getint("")) {
 		case 1:
 			Syso.printOrders();
+			menuPedidos();
 			break;
 		case 2:
 			u.viewOrdersNotPayed();
+			menuPedidos();
 			break;
 		case 3:
 			u.viewOrdersPendingDelivered();
+			menuPedidos();
 			break;
 		case 4:
 			u.deleteOrder(c.searchClient(GUI.getDni()));
+			menuPedidos();
 			break;
 		case 5:
 			menuPrincipal();
@@ -145,18 +149,23 @@ public class MainMenu implements IMainMenuController{
 		switch (GUI.getint("")) {
 		case 1:
 			u.newClient();
+			menuClientes();
 			break;
 		case 2:
 			c.searchClient(GUI.getDni()).addAddress("Introduce la direccion");
+			menuClientes();
 			break;
 		case 3:
 			c.searchClient(GUI.getDni()).setAge(GUI.getAge());
+			menuClientes();
 			break;
 		case 4:
 			Syso.printClients();
+			menuClientes();
 			break;
 		case 5:
 			GUI.exportarC(c);
+			menuClientes();
 			break;
 		case 6:
 			menuPrincipal();
@@ -173,15 +182,19 @@ public class MainMenu implements IMainMenuController{
 		switch (GUI.getint("")) {
 		case 1:
 			u.cashTotal();
+			menuFinanzas();
 			break;
 		case 2:
 			u.cashThisMonht();
+			menuFinanzas();
 			break;
 		case 3:
 			u.cashToday();
+			menuFinanzas();
 			break;
 		case 4:
 			u.cashNoPayed();
+			menuFinanzas();
 			break;
 		case 5:
 			menuPrincipal();
@@ -198,24 +211,31 @@ public class MainMenu implements IMainMenuController{
 			switch (GUI.getint("")) {
 			case 1:
 				ca.NewCarritoO();
+				menuCarrito();
 				break;
 			case 2:
 				ca.addProduct();
+				menuCarrito();
 				break;
 			case 3:
 				ca.editLine();
+				menuCarrito();
 				break;
 			case 4:
 				ca.removeLine();
+				menuCarrito();
 				break;
 			case 5:
 				ca.setAddress(GUI.getString("Introduce la direccion:"));
+				menuCarrito();
 				break;
 			case 6:
 				ca.savePaid();
+				menuCarrito();
 				break;
 			case 7:
 				ca.saveNoPaid();
+				menuCarrito();
 				break;
 			case 8:
 				menuPrincipal();
