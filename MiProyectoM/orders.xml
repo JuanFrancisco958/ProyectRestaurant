@@ -11,9 +11,25 @@
             <u/>
         </client>
         <id>1</id>
-        <Products>1</Products>
-        <total>0.0</total>
+        <total>4.5</total>
         <localDateTime>2021-03-01T18:12:05.778737500</localDateTime>
+        <address>C/Bonifacio</address>
+        <delivered>false</delivered>
+        <payed>true</payed>
+    </order>
+    <order>
+        <client>
+            <dni>31009229P</dni>
+            <name>juan</name>
+            <age>18</age>
+            <address>C/bonifacio</address>
+            <orders>2</orders>
+            <points>0</points>
+            <u/>
+        </client>
+        <id>2</id>
+        <total>5.3</total>
+        <localDateTime>2021-03-05T22:38:11.772680600</localDateTime>
         <address>C/Bonifacio</address>
         <delivered>false</delivered>
         <payed>true</payed>

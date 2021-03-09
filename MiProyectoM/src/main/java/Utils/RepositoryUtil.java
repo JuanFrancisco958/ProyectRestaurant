@@ -1,15 +1,7 @@
 package Utils;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import javax.xml.bind.JAXBContext;
@@ -21,7 +13,6 @@ import Clients.Client;
 import Clients.RepositoryC;
 import Orders.Order;
 import Orders.RepositoryO;
-import Products.Repository;
 /**
  * Repositorio sobre metodos de importación y exportación de datos en archivo xml.
  * @author JF

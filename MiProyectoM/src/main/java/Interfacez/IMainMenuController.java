@@ -10,7 +10,7 @@ import Orders.Order;
  *
  */
 public interface IMainMenuController {
-	void newOrder();
+	void newOrder(Client c, LocalDate d);
 	Order changeOrder(Client c);
 	Order changeOrder(LocalDate d);
 	Order changeOrder(Client c, LocalDate d);

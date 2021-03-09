@@ -8,4 +8,13 @@
         <points>0</points>
         <u/>
     </cliente>
+    <cliente>
+        <dni>31009229P</dni>
+        <name>juan</name>
+        <age>18</age>
+        <address>C/bonifacio</address>
+        <orders>2</orders>
+        <points>0</points>
+        <u/>
+    </cliente>
 </Client>

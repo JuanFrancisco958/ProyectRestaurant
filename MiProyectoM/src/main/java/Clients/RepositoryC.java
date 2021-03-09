@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Utils.RepositoryUtil;
+import Vista.Syso;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -106,6 +107,9 @@ public class RepositoryC implements Serializable{
 						result=c;
 					}
 				}
+			}
+			if (result==null) {
+				Syso.print("No se encuentra al cliente.");
 			}
 		return result;
 	}

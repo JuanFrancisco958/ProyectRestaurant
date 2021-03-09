@@ -16,6 +16,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 import Clients.Client;
 import Products.Product;
+import Products.Repository;
 import Utils.LocalDateAdapter;
 
 /**
@@ -29,7 +30,7 @@ public class Order implements Serializable{
 	//Atributos.
 	private Client client;
 	private Integer id;
-	private List<Integer> Products=new ArrayList<>();
+	private static List<Integer> Products=new ArrayList<>();
 	private double total;
 	@XmlJavaTypeAdapter(value = LocalDateAdapter.class)
 	LocalDateTime localDateTime = LocalDateTime.now();
@@ -49,12 +50,12 @@ public class Order implements Serializable{
 	 * @param delivered Si está o no entregada.
 	 * @param payed Si está o no pagado.
 	 */
-	public Order(Client client, Integer id, List<Integer> products, double total, LocalDateTime localDateTime,
+	public Order(Client client, Integer id, Integer products, double total, LocalDateTime localDateTime,
 			String address, boolean delivered, boolean payed) {
 		super();
 		this.client = client;
 		this.id = id;
-		Products = products;
+		this.Products.add(products);
 		this.total = total;
 		this.localDateTime = localDateTime;
 		this.address = address;
@@ -71,18 +72,18 @@ public class Order implements Serializable{
 	 * @param delivered Si está o no entregada.
 	 * @param payed Si está o no pagado.
 	 */
-	public Order( Client client,Integer id, Integer product,String address, boolean delivered, boolean payed) {
+	public Order( Client client,Integer id, Integer product,String address) {
 		this.id=id;
 		this.client = client;
 		Products.add(product);
 		this.address = address;
-		/*this.total=getAllInput();*/
+		this.total=getAllInput(product);
 		this.delivered = delivered;
 		this.payed = payed;
 	}
 
 	//Métodos Getters y Setters de los atributos.
-	protected Integer getId() {
+	public Integer getId() {
 		return id;
 	}
 	protected void setId(Integer id) {
@@ -137,20 +138,36 @@ public class Order implements Serializable{
 	}
 	public void addProduct(Integer p) {
 		Products.add(p);
+		this.total=getMoneyOrder();
 	}
 	public void deleteProduct(Integer p) {
 		Products.remove(p);
 	}
-	/*public Product getAllInput() {
-		Product result;
+	public static double getAllInput(Integer o) {
+		Repository c=new Repository();
+		double result=0;
+		 if (o!=null) {
+			
+			result+=c.searchProduct(o).getPrice();
+		
+		}
+		return result;
+	}
+	/**
+	 * Obtiene precio de una orden
+	 * @param o La orden
+	 * @return El precio de todos los productos.
+	 */
+	public static double getMoneyOrder() {
+		Repository c=new Repository();
+		double result=0;
 		 if (Products!=null) {
-			for (Product item : Products) {
-				result+=item;
+			for (Integer item : Products) {
+				result+=c.searchProduct(item).getPrice();
 			}
 		}
 		return result;
-	}*/
-
+	}
 	
 	//Método para comparar dos ordenes.
 	@Override
