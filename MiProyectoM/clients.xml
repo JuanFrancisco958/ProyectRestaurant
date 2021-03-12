@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Client>
+    <cliente>
+        <dni>31009229P</dni>
+        <name>Juan</name>
+        <age>19</age>
+        <address>C/Bonifacio</address>
+        <address>Introduce la direccion</address>
+        <orders>1</orders>
+        <orders>1</orders>
+        <orders>1</orders>
+        <orders>2</orders>
+        <points>0</points>
+        <u/>
+    </cliente>
+    <cliente>
+        <dni>31006156V</dni>
+        <name>nico</name>
+        <age>30</age>
+        <address>C/Olivo 12</address>
+        <orders>2</orders>
+        <points>0</points>
+        <u/>
+    </cliente>
+    <cliente>
+        <dni>50624071J</dni>
+        <name>marta</name>
+        <age>23</age>
+        <address>C/calle falsa, 30</address>
+        <points>0</points>
+        <u/>
+    </cliente>
+</Client>
