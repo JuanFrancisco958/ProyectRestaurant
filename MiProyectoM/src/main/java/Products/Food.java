@@ -13,11 +13,13 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author JF
  *
  */
+@SuppressWarnings("serial")
 @XmlRootElement(name = "Food")
 @XmlAccessorType (XmlAccessType.FIELD)
 public class Food extends Product implements Serializable{
 	//Atributos
 	private boolean forVegans;
+	@SuppressWarnings("unused")
 	private Food() {}
 
 	/**
@@ -50,9 +52,9 @@ public class Food extends Product implements Serializable{
 
 	//Métodos Getters and Setters de los atributos.
 	
-	public List<Product> getBundlePack() {
-		List<Product> result=new ArrayList<>();
-		//result=super.getBundle();
+	public List<Integer> getBundlePack() {
+		List<Integer> result=new ArrayList<>();
+		result=this.bundle;
 		return result;
 	}
 

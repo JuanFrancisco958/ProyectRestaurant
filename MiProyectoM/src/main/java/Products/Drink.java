@@ -13,11 +13,13 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author JF
  *
  */
+@SuppressWarnings("serial")
 @XmlRootElement (name = "Drink")
 @XmlAccessorType (XmlAccessType.FIELD)
 public class Drink extends Product implements Serializable{
 	//Atributos
 	private boolean alcoholic;
+	@SuppressWarnings("unused")
 	private Drink() {}
 	
 	/**
@@ -50,8 +52,9 @@ public class Drink extends Product implements Serializable{
 
 
 	//Métodos Getters and Setters de los atributos.
-	public List<Product> getBundlePack() {
-		List<Product> result=new ArrayList<>();
+	public List<Integer> getBundlePack() {
+		List<Integer> result=new ArrayList<>();
+		result=this.bundle;
 		return result;
 	}
 	public boolean isAlcoholic() {

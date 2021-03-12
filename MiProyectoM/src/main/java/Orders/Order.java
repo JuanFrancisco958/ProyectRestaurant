@@ -1,21 +1,16 @@
 package Orders;
 
 import java.io.Serializable;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.chrono.ChronoLocalDateTime;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 import Clients.Client;
-import Products.Product;
 import Products.Repository;
 import Utils.LocalDateAdapter;
 
@@ -24,6 +19,7 @@ import Utils.LocalDateAdapter;
  * @author JF
  *
  */
+@SuppressWarnings("serial")
 @XmlRootElement(name = "order")
 @XmlAccessorType (XmlAccessType.FIELD)
 public class Order implements Serializable{
@@ -37,6 +33,7 @@ public class Order implements Serializable{
 	private String address;
 	private boolean delivered;
 	private boolean payed;
+	@SuppressWarnings("unused")
 	private  Order() {}
 	
 	/**
@@ -55,7 +52,7 @@ public class Order implements Serializable{
 		super();
 		this.client = client;
 		this.id = id;
-		this.Products.add(products);
+		Products.add(products);
 		this.total = total;
 		this.localDateTime = localDateTime;
 		this.address = address;
@@ -78,8 +75,7 @@ public class Order implements Serializable{
 		Products.add(product);
 		this.address = address;
 		this.total=getAllInput(product);
-		this.delivered = delivered;
-		this.payed = payed;
+	
 	}
 
 	//Métodos Getters y Setters de los atributos.
@@ -99,7 +95,7 @@ public class Order implements Serializable{
 		return Products;
 	}
 	public void setProducts(List<Integer> products){
-		this.Products=products;
+		Products=products;
 	}
 	public double getTotal() {
 		return total;
@@ -130,9 +126,7 @@ public class Order implements Serializable{
 	}
 	
 	//Metodos de introducción y eliminacion para los productos.
-	public void addNewProducts(List<Integer> products) {
-		Products.addAll(products);
-	}
+
 	public void clearAllProducts() {
 		Products.clear();
 	}

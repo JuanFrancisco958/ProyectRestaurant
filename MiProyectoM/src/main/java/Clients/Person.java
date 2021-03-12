@@ -7,6 +7,7 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 
+@SuppressWarnings("serial")
 @XmlRootElement(name = "Perso")
 @XmlAccessorType (XmlAccessType.FIELD)
 public class Person implements Serializable{
@@ -27,20 +28,29 @@ public class Person implements Serializable{
 	public String getDni() {
 		return dni;
 	}
-	public void setDni(String dni) {
+	@SuppressWarnings("unused")
+	private void setDni(String dni) {
 		this.dni = dni;
 	}
 	public String getName() {
 		return name;
 	}
 	public void setName(String name) {
-		this.name = name;
+		try {
+			this.name = name;
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 	}
 	public int getAge() {
 		return age;
 	}
 	public void setAge(int age) {
-		this.age = age;
+		try {
+			this.age = age;
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 	}
 
 	@Override

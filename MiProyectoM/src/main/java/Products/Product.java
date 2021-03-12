@@ -13,6 +13,7 @@ import Interfacez.IProduct;
  * @author JF
  *
  */
+@SuppressWarnings("serial")
 @XmlRootElement(name = "Products")
 @XmlAccessorType (XmlAccessType.FIELD)
 abstract public class Product implements IProduct, Serializable {

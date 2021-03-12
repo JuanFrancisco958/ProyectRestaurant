@@ -31,20 +31,24 @@ public class MainMenu implements IMainMenuController{
 		run();
 	}
 	public static void run() {
+		Syso.menuP();
 		Syso.menuDeBienvenida();
 		RepositoryC c=RepositoryC.getInstance();
 		RepositoryO o=RepositoryO.getInstance();
 		GUI.importarC(c);
 		GUI.importarO(o);
-		System.out.println(c.searchClient(GUI.getDni()));
 		menuPrincipal();
 	}
 	public static void menuPrincipal() {
-		MainMenu u=new MainMenu();
-				
+		MainMenu u=new MainMenu();	
 		Syso.menuPrincipal();
+		int n=GUI.getint("");
+		while (n<=0||n>=7){
+			Syso.print("Fuera de rango");
+			n=GUI.getint("");
+		}
 		
-		switch (GUI.getint("")) {
+		switch (n) {
 		case 1:
 			menuCartaOferta();
 			break;
@@ -75,8 +79,13 @@ public class MainMenu implements IMainMenuController{
 	public static void menuCartaOferta() {
 		Syso.menuMenuOferta();
 		Repository c=new Repository();
+		int n=GUI.getint("");
+		while (n<=0||n>=5){
+			Syso.print("Fuera de rango");
+			n=GUI.getint("");
+		}
 
-		switch (GUI.getint("")) {
+		switch (n) {
 		case 1:
 			Syso.printCarta();
 			menuCartaOferta();
@@ -107,8 +116,13 @@ public class MainMenu implements IMainMenuController{
 		MainMenu u=new MainMenu();
 		RepositoryC c=RepositoryC.getInstance();
 		GUI.importarC(c);
+		int n=GUI.getint("");
+		while (n<=0||n>=5){
+			Syso.print("Fuera de rango");
+			n=GUI.getint("");
+		}
 		
-		switch (GUI.getint("")) {
+		switch (n) {
 		case 1:
 			Syso.printOrders();
 			menuPedidos();
@@ -138,8 +152,13 @@ public class MainMenu implements IMainMenuController{
 		MainMenu u=new MainMenu();
 		RepositoryC c=RepositoryC.getInstance();
 		GUI.importarC(c);
+		int n=GUI.getint("");
+		while (n<=0||n>=7){
+			Syso.print("Fuera de rango");
+			n=GUI.getint("");
+		}
 		
-		switch (GUI.getint("")) {
+		switch (n) {
 		case 1:
 			u.newClient();
 			menuClientes();
@@ -157,14 +176,10 @@ public class MainMenu implements IMainMenuController{
 			menuClientes();
 			break;
 		case 5:
-			Syso.printClients();
-			menuClientes();
-			break;
-		case 6:
 			GUI.exportarC(c);
 			menuClientes();
 			break;
-		case 7:
+		case 6:
 			menuPrincipal();
 			break;
 
@@ -175,8 +190,12 @@ public class MainMenu implements IMainMenuController{
 	public static void menuFinanzas() {
 		Syso.menuFinanzas();
 		MainMenu u=new MainMenu();
-		
-		switch (GUI.getint("")) {
+		int n=GUI.getint("");
+		while (n<=0||n>=5){
+			Syso.print("Fuera de rango");
+			n=GUI.getint("");
+		}
+		switch (n) {
 		case 1:
 			u.cashTotal();
 			menuFinanzas();
@@ -201,11 +220,18 @@ public class MainMenu implements IMainMenuController{
 			break;
 		}
 	}
+		@SuppressWarnings("static-access")
 		public static void menuCarrito() {
 			Syso.menuCarrito();
+			MainMenu u=new MainMenu();
+			RepositoryC c=RepositoryC.getInstance();
 			NewCarrito ca=NewCarrito.getInstanced();
-			
-			switch (GUI.getint("")) {
+			int n=GUI.getint("");
+			while (n<=0||n>=12){
+				Syso.print("Fuera de rango");
+				n=GUI.getint("");
+			}
+			switch (n) {
 			case 1:
 				ca.NewCarritoO();
 				menuCarrito();
@@ -227,14 +253,26 @@ public class MainMenu implements IMainMenuController{
 				menuCarrito();
 				break;
 			case 6:
-				ca.savePaid();
-				menuCarrito();
-				break;
-			case 7:
 				ca.saveNoPaid();
 				menuCarrito();
 				break;
+			case 7:
+				ca.savePaid();
+				menuCarrito();
+				break;
 			case 8:
+				ca.setDelivered();
+				menuCarrito();
+				break;
+			case 9:
+				ca.sobreEscribir();
+				menuCarrito();
+				break;
+			case 10:
+				u.changeOrder(c.searchClient(GUI.getDni()));
+				menuCarrito();
+				break;
+			case 11:
 				menuPrincipal();
 				break;
 
@@ -288,6 +326,8 @@ public class MainMenu implements IMainMenuController{
 	public Order changeOrder(Client c) {
 		RepositoryO o=RepositoryO.getInstance();
 		GUI.importarO(o);
+		NewCarrito.selectOrder(c);
+		
 
 		return null;
 	}
@@ -314,7 +354,7 @@ public class MainMenu implements IMainMenuController{
 		GUI.importarO(o);
 		List<Order> item=o.getOrdersByClient(GUI.getDni());
 		if (c!=null) {
-			Iterator<Order> i=o.getAllOrders().iterator(); 
+			Iterator<Order> i=item.iterator(); 
 			
 			while (i.hasNext()) {
 				if (GUI.getint("Introduce el id")==i.next().getId()) {
@@ -330,7 +370,7 @@ public class MainMenu implements IMainMenuController{
 		GUI.importarO(o);
 		List<Order> item=o.getOrdersByClient(GUI.getDni());
 		if (d!=null) {
-			Iterator<Order> i=o.getAllOrders().iterator(); 
+			Iterator<Order> i=item.iterator(); 
 			
 			while (i.hasNext()) {
 				if (LocalDateTime.of(GUI.getint("Año:"), GUI.getint("mes:"), GUI.getint("dia:"), GUI.getint("Hora:"), GUI.getint("Minutos:"))==i.next().getLocalDateTime().withNano(00)) {
@@ -346,7 +386,7 @@ public class MainMenu implements IMainMenuController{
 		GUI.importarO(o);
 		List<Order> item=o.getOrdersByClient(GUI.getDni());
 		if (c!=null && d!=null) {
-			Iterator<Order> i=o.getAllOrders().iterator(); 
+			Iterator<Order> i=item.iterator(); 
 			
 			while (i.hasNext()) {
 				if (GUI.getint("Introduce el id")==i.next().getId() &&LocalDateTime.of(GUI.getint("Año:"), GUI.getint("mes:"), GUI.getint("dia:"), GUI.getint("Hora:"), GUI.getint("Minutos:"))==i.next().getLocalDateTime().withNano(00)) {

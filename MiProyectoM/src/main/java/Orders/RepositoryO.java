@@ -1,11 +1,8 @@
 package Orders;
 
 import java.io.Serializable;
-import java.net.CookieManager;
-import java.sql.Date;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,10 +11,9 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
-import Clients.RepositoryC;
-import Utils.RepositoryUtil;
 import Vista.Syso;
 
+@SuppressWarnings("serial")
 @XmlRootElement(name = "RepositoryO")
 @XmlAccessorType (XmlAccessType.FIELD)
 public class RepositoryO implements Serializable{
@@ -43,7 +39,7 @@ public class RepositoryO implements Serializable{
 	}
 	
 	public List<Order> getOrdersByClient(String dni){
-		List<Order> result=new ArrayList<>();;
+		List<Order> result=new ArrayList<>();
 		if (dni!=null) {
 			for (Order com : comandas) {
 				if (com.getClient().getDni().equals(dni)) {

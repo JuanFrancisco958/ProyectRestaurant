@@ -32,7 +32,7 @@ public class Repository {
 			carta.add(new Drink(3,"Agua", 0.8, true, false));
 			carta.add(new Food(4,"Durum", 1, false, false));
 			carta.add(new Food(5, "Pizza Vegana", 4.5, true, true));
-			carta.add(new Food(6,"Kebah", 1.5, true, false));
+			carta.add(new Food(6,"Kebab", 1.5, true, false));
 		}
 
 		/**
@@ -117,11 +117,14 @@ public class Repository {
 		   * @return Lista de productos.
 		   */
 		  public List<Product> getBundleProducts(Product p) {
-		    // TODO Auto-generated method stub
+		    List<Product> result=new ArrayList<>();
+			  for (Product item : carta) {
+				  if (!item.getBundlePack().isEmpty()) {
+					  result.add(item);
+				}
+			}
 			  
-			  
-			  
-		    return null;
+		    return result;
 		  }
 		  public List<Product> getBundleProducts() {
 				  List<Product> result=new ArrayList<>();

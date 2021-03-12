@@ -15,6 +15,7 @@ public class GUI {
 	 * @return devuelve un entero introducido por teclado
 	 */
 	public static int  getint(String frase) {
+		@SuppressWarnings("resource")
 		Scanner teclado=new Scanner(System.in);
 		int result=-1;
 		
@@ -31,6 +32,7 @@ public class GUI {
 	 * @return devuelve un entero.
 	 */
 	public static int  getAge() {
+		@SuppressWarnings("resource")
 		Scanner teclado=new Scanner(System.in);
 		int result=-1;
 		
@@ -52,6 +54,7 @@ public class GUI {
 	 * @return devuelve un string introducido por teclado
 	 */
 	public static String  getString(String frase) {
+		@SuppressWarnings("resource")
 		Scanner teclado=new Scanner(System.in);
 		String result=null;
 		
@@ -68,7 +71,8 @@ public class GUI {
 	}
 	public static String getDni() {
 		 String result = null;
-	        Scanner miScanner = new Scanner(System.in);
+	        @SuppressWarnings("resource")
+			Scanner miScanner = new Scanner(System.in);
 	        Pattern patron = Pattern.compile("[0-9]{7,8}[A-Z a-z]");
 	        Syso.print("Introduce un DNI correcto: ");
 	        result = miScanner.nextLine();
@@ -106,6 +110,7 @@ public class GUI {
 	 * @return devuelve un boleano a decisión del usuario.
 	 */
 	public static Boolean  getBoolean(String frase) {
+		@SuppressWarnings("resource")
 		Scanner teclado=new Scanner(System.in);
 		Boolean result=null;
 		
@@ -126,9 +131,11 @@ public class GUI {
 		
 		return result;
 	} 
+	@SuppressWarnings("static-access")
 	public static void exportarC(RepositoryC c) {
 		RepositoryUtil.saveFile(c.getInstance());
 	}
+	@SuppressWarnings("static-access")
 	public static void exportarO(RepositoryO o) {
 		RepositoryUtil.saveFileO(o.getInstance());
 	}

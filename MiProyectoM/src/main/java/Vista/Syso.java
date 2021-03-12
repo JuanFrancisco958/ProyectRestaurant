@@ -14,7 +14,7 @@ import Utils.GUI;
 
 public class Syso {
 	public static void menuP() {
-		System.out.println("+-----------------------------------------+");
+		/*System.out.println("+-----------------------------------------+");
 		System.out.println("|  Menu Principal                         |");
 		System.out.println("|                                         |");
 		System.out.println("|  0º Nueva Orden                         |");
@@ -30,9 +30,23 @@ public class Syso {
 		System.out.println("|  10º Ver Ordenes no pagadas             |");
 		System.out.println("|  11º Ver Ordenes no entregadas          |");
 		System.out.println("|  12º Guardar y cerrar                   |");
-		System.out.println("+-----------------------------------------+");
-
+		System.out.println("+-----------------------------------------+");*/
+		System.out.println("  _______  _______  _______  _                 _              _        _______  ______   _______  ______");  
+		System.out.println(" (       )(  ___  )(  ____ \\( (    /||\\     /|( (    /|      | \\    /\\(  ____ \\(  ___ \\ (  ___  )(  ___ \\ ");
+		System.out.println(" | () () || (   ) || (    \\/|  \\  ( || )   ( ||  \\  ( |      |  \\  / /| (    \\/| (   ) )| (   ) || (   ) )");
+		System.out.println(" | || || || (___) || |      |   \\ | || |   | ||   \\ | |      |  (_/ / | (__    | (__/ / | (___) || (__/ / ");
+		System.out.println(" | |(_)| ||  ___  || | ____ | (\\ \\) || |   | || (\\ \\) |      |   _ (  |  __)   |  __ (  |  ___  ||  __ (  ");
+		System.out.println(" | |   | || (   ) || | \\_  )| | \\   || |   | || | \\   |      |  ( \\ \\ | (      | (  \\ \\ | (   ) || (  \\ \\ ");
+		System.out.println(" | )   ( || )   ( || (___) || )  \\  || (___) || )  \\  |      |  /  \\ \\| (____/\\| )___) )| )   ( || )___) )");
+		System.out.println(" |/     \\||/     \\|(_______)|/    )_)(_______)|/    )_)      |_/    \\/(_______/|/ \\___/ |/     \\||/ \\___/ ");
+		
+		
+		
+		
+		
+		
 	}
+	
 	
 	public static void menuDeBienvenida() {
 		                                                                  
@@ -117,13 +131,13 @@ public class Syso {
 		System.out.println("|                                                 |");
 		System.out.println("|  - 2: Añadir Direccion:                         |");
 		System.out.println("|                                                 |");
-		System.out.println("|  - 3: Añadir Edad:                              |");
+		System.out.println("|  - 3: Actualizar Edad:                          |");
 		System.out.println("|                                                 |");
-		System.out.println("|  - 5: Mostrar todos los clientes:               |");
+		System.out.println("|  - 4: Mostrar todos los clientes:               |");
 		System.out.println("|                                                 |");
-		System.out.println("|  - 6: Guardar Nuevo Cliente:                    |");
+		System.out.println("|  - 5: Guardar Nuevo Cliente:                    |");
 		System.out.println("|                                                 |");
-		System.out.println("|  - 7: Volver al Menu Principal:                 |");
+		System.out.println("|  - 6: Volver al Menu Principal:                 |");
 		System.out.println("+-------------------------------------------------+");
 	}
 	public static void menuFinanzas() {
@@ -163,7 +177,13 @@ public class Syso {
 		System.out.println("|                                                 |");
 		System.out.println("|  - 7: Guardar como pagado:                      |");
 		System.out.println("|                                                 |");
-		System.out.println("|  - 8: Volver al Menu Principal:                 |");
+		System.out.println("|  - 8: Guardar como entregado:                   |");
+		System.out.println("|                                                 |");
+		System.out.println("|  - 9: Sobreescribir orden:                      |");
+		System.out.println("|                                                 |");
+		System.out.println("|  - 10: Selecionar Orden para editar:            |");
+		System.out.println("|                                                 |");
+		System.out.println("|  - 11: Volver al Menu Principal:                |");
 		System.out.println("+-------------------------------------------------+");
 	}
 	public static void menuDeDespedida() {

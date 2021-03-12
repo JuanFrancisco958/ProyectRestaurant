@@ -7,16 +7,22 @@ import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 
-import Orders.Order;
 import Utils.RepositoryUtil;
 
+@SuppressWarnings("serial")
 @XmlAccessorType (XmlAccessType.FIELD)
 public class Client extends Person implements Serializable{
 	private List<String> address=new ArrayList<>();
 	private List<Integer> orders=new ArrayList<>();
 	private int points=0;
-	private Client() {}
 	RepositoryUtil u= new RepositoryUtil();
+
+
+	@SuppressWarnings("unused")
+	private Client() {
+		super();
+	}
+
 
 	public Client(String dni, String name, int age,String addres) {
 		super(dni, name, age);

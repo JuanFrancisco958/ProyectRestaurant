@@ -4,25 +4,20 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import Utils.RepositoryUtil;
 import Vista.Syso;
 
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Marshaller;
-import javax.xml.bind.Unmarshaller;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
-import Orders.Order;
 
+@SuppressWarnings("serial")
 @XmlRootElement (name = "Client")
 @XmlAccessorType (XmlAccessType.FIELD)
 public class RepositoryC implements Serializable{
 	private static RepositoryC _instance;
-	private static RepositoryUtil u=new RepositoryUtil();
 	@XmlElement(name = "cliente")
 	private static List<Client> clientes=new ArrayList<>();
 
