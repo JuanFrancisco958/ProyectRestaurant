@@ -26,7 +26,7 @@ public class GUI {
 		return result;
 	}
 	/**
-	 * Obtener edad entre 15-110 a�os
+	 * Obtener edad entre 15-110 años
 	 * @return devuelve un entero.
 	 */
 	public static int  getAge() {
@@ -45,7 +45,6 @@ public class GUI {
 		
 		return result;
 	}
-
 	/***
 	 * Obtener una cadena de caracteres.
 	 * @param frase Texto con la informacion deseada.
@@ -67,6 +66,10 @@ public class GUI {
 		
 		return result;
 	}
+	/**
+	 * Obtener Direecion formateada
+	 * @return string con la dirrección
+	 */
 	public static String getAddress() {
 		String result=null;
 		@SuppressWarnings("resource")
@@ -89,6 +92,10 @@ public class GUI {
 			
 		return result;
 	}
+	/**
+	 * Obtener dni validado como real.
+	 * @return string dni
+	 */
 	public static String getDni() {
 		 String result = null;
 	        @SuppressWarnings("resource")
@@ -99,7 +106,7 @@ public class GUI {
 	        Matcher mat = patron.matcher(result);
 	       
 				while((!mat.matches() || !validaDNI(result))&&result.length()==9){
-					Syso.print("El DNI introducido es incorrecto, por favor introduzca un DNI v�lido, con la letra en mayuscula.");
+					Syso.print("El DNI introducido es incorrecto, por favor introduzca un DNI válido, con la letra en mayuscula.");
 			           Syso.print("Introduce un DNI correcto: ");
 			           result = miScanner.nextLine();
 			           mat = patron.matcher(result);
@@ -108,7 +115,11 @@ public class GUI {
 	        
 	        return result;
 	}
-	
+	/**
+	 * Validacion de direccion
+	 * @param address direccion a validar
+	 * @return true si es corecta
+	 */
 	private static boolean validaAddress(String address) {
 		boolean result=false;
 		if(address!=null) {
@@ -122,7 +133,11 @@ public class GUI {
 		}
 		return result;
 	}
-	
+	/**
+	 * Valida si dni es real
+	 * @param dni string a validar
+	 * @return true si es valido
+	 */
 	private static boolean validaDNI(String dni){
 		boolean result=false;
 		if(dni.length()==9) {
@@ -135,16 +150,20 @@ public class GUI {
 		}
 		return result;
 	}
+	/**
+	 * metodo para validar la letra de un dni
+	 * @param dni string a validar
+	 * @return la letra de supuesto dni
+	 */
 	private static char calcularLetraArray(int dni){
         char caracteres[] = {'T','R','W','A','G','M','Y','F','P','D','X','B','N','J','Z','S','Q','V','H','L','C','K','E'};
         int resto = dni%23;
         return caracteres[resto];
    }
-    
 	/**
-	 * 
+	 * Obtencion de booleano
 	 * @param frase Texto con la informacion deseada.
-	 * @return devuelve un boleano a decisi�n del usuario.
+	 * @return devuelve un boleano a decisión del usuario.
 	 */
 	public static Boolean  getBoolean(String frase) {
 		@SuppressWarnings("resource")
